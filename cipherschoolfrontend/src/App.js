@@ -104,7 +104,7 @@ function App() {
       <Modal show={PersonalInformation} close_modal={closeModal}>
         <PersonalInformationModalContent close_modal={closeModal} />
       </Modal>
-      <ToastContainer />
+      <ToastContainer style={{ zIndex: "100" }} />
     </div>
   );
 }
