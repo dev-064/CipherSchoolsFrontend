@@ -44,7 +44,8 @@ const Links = () => {
         }
       )
       .then(function (response) {
-        console.log("response", response);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        showToastMessage("Links is Successfully Saved", "positive")
       })
       .catch(function (error) {
         if (error.response.status === 400) {

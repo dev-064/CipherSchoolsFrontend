@@ -24,7 +24,8 @@ const PasswordUpdateModalContent = () => {
           }
         )
         .then(function (response) {
-          console.log("response", response);
+          localStorage.setItem("user", JSON.stringify(response.data.user));
+          showToastMessage("Password is Successfully Updated", "positive");
           props.close_modal();
         })
         .catch(function (error) {

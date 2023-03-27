@@ -24,7 +24,8 @@ const AboutMe = () => {
         }
       )
       .then(function (response) {
-        
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        showToastMessage("Description is Successfully Saved", "positive")
       })
       .catch(function (error) {
         if (error.response.status === 400) {

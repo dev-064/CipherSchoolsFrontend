@@ -29,7 +29,10 @@ const Education = () => {
           },
         }
       )
-      .then(function (response) {})
+      .then(function (response) {
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        showToastMessage("Personal Information is Successfully Saved", "positive")
+      })
       .catch(function (error) {
         if (error.response.status === 400) {
           showToastMessage(error.response.data.error, "negative");

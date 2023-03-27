@@ -17,7 +17,8 @@ const InterestsModalContent = (props) => {
         },
       })
       .then(function (response) {
-        console.log("response", response);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        showToastMessage("Interests are Successfully Added", "positive")
         props.close_modal();
       })
       .catch(function (error) {
