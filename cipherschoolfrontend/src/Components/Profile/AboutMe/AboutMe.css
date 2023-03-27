@@ -1,0 +1,31 @@
+#About{
+    margin: 2em;
+}
+
+#About .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#About .header button{
+    margin-right: 20px;
+    padding: 7px 30px ;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: orange;
+    color: white;
+    border: none;
+}
+.AboutContainer{
+    border: 1px solid rgba(0, 0, 0, 0.587);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    border-radius: 10px;
+}
+.AboutContainer p{
+    width: 95%;
+    padding: 0em 2em;
+}
