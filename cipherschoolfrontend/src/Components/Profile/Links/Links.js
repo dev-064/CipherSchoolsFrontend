@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./Links.css";
 import axios from "axios";
+import { showToastMessage } from "../../Toast/Toast";
 const Links = () => {
   const [facebook, setfacebook] = useState(
     JSON.parse(localStorage.getItem("user")).SocialMediaLinks.facebook
@@ -46,7 +47,11 @@ const Links = () => {
         console.log("response", response);
       })
       .catch(function (error) {
-        console.log("error", error);
+        if (error.response.status === 400) {
+          showToastMessage(error.response.data.error, "negative");
+        } else {
+          showToastMessage("Internal Server Error", "negative");
+        }
       });
   };
   return (

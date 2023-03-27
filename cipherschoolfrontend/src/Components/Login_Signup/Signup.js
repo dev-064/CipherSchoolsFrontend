@@ -38,11 +38,14 @@ function Signup(props) {
           showToastMessage("User is Successfully Registered", "positive");
         })
         .catch(function (error) {
-          console.log(error);
+          if (error.response.status === 400) {
+            showToastMessage(error.response.data.error, "negative");
+          } else {
+            showToastMessage("Internal Server Error", "negative");
+          }
         });
     },
   });
-
   return (
     <>
       <div className="form-box1">

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import {showToastMessage} from "../../Toast/Toast"
 import "./AboutMe.css";
 const AboutMe = () => {
   const [Desc, setDesc] = useState(
@@ -22,9 +23,15 @@ const AboutMe = () => {
           },
         }
       )
-      .then(function (response) {})
+      .then(function (response) {
+        
+      })
       .catch(function (error) {
-        console.log("error", error);
+        if (error.response.status === 400) {
+          showToastMessage(error.response.data.error, "negative");
+        } else {
+          showToastMessage("Internal Server Error", "negative");
+        }
       });
   };
   return (

@@ -2,6 +2,7 @@ import React from "react";
 import "./InterestsModalContent.css";
 import { useState } from "react";
 import axios from "axios";
+import { showToastMessage } from "../../../Toast/Toast";
 const InterestsModalContent = (props) => {
   const [InterestArray, setInterestArray] = useState([]);
   const handleInterstsArray = () => {
@@ -20,7 +21,11 @@ const InterestsModalContent = (props) => {
         props.close_modal();
       })
       .catch(function (error) {
-        console.log("error", error);
+        if (error.response.status === 400) {
+          showToastMessage(error.response.data.error, "negative");
+        } else {
+          showToastMessage("Internal Server Error", "negative");
+        }
       });
   };
   const addElement = (value) => {

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./Education.css";
 import axios from "axios";
+import { showToastMessage } from "../../Toast/Toast";
 const Education = () => {
   const [highestEducation, sethighestEducation] = useState(
     JSON.parse(localStorage.getItem("user")).PersonalInformation
@@ -30,7 +31,11 @@ const Education = () => {
       )
       .then(function (response) {})
       .catch(function (error) {
-        console.log("error", error);
+        if (error.response.status === 400) {
+          showToastMessage(error.response.data.error, "negative");
+        } else {
+          showToastMessage("Internal Server Error", "negative");
+        }
       });
   };
   return (

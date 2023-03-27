@@ -28,7 +28,11 @@ const PasswordUpdateModalContent = () => {
           props.close_modal();
         })
         .catch(function (error) {
-          console.log("error", error);
+          if (error.response.status === 400) {
+            showToastMessage(error.response.data.error, "negative");
+          } else {
+            showToastMessage("Internal Server Error", "negative");
+          }
         });
     } else {
       showToastMessage("Confirm Password is not equal to New Password");
