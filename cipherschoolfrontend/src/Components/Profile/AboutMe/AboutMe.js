@@ -3,15 +3,25 @@ import { useState } from "react";
 import axios from "axios";
 import "./AboutMe.css";
 const AboutMe = () => {
-  const [Desc, setDesc] = useState("Add Something About You!");
+  const [Desc, setDesc] = useState(
+    JSON.parse(localStorage.getItem("user")).Description
+  );
   const [EditState, setEditState] = useState(false);
   const [buttonState, setbuttonState] = useState("Edit");
   const handleDescriptionChange = () => {
     axios
-      .put(`${process.env.REACT_APP_UserINFO_API}/AboutMe`, {
-        email: localStorage.getItem("email"),
-        Description: Desc,
-      })
+      .put(
+        `${process.env.REACT_APP_UserINFO_API}/AboutMe`,
+        {
+          email: localStorage.getItem("email"),
+          Description: Desc,
+        },
+        {
+          headers: {
+            "auth-token": localStorage.getItem("token"),
+          },
+        }
+      )
       .then(function (response) {})
       .catch(function (error) {
         console.log("error", error);

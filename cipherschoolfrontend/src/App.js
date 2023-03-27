@@ -7,8 +7,11 @@ import Modal from "./Components/Modal/Modal";
 import Profile from "./Components/Profile/Profile";
 import InterestsModalContent from "./Components/Profile/Interests/InterestsModalContent/InterestsModalContent";
 import PasswordUpdateModalContent from "./Components/Profile/PasswordUpdate/PasswordUpdateModal/PasswordUpdateModal";
+import Home from "./Components/Home/Home";
 function App() {
-  const [LoginModal, setLoginModal] = useState(true);
+  const [LoginModal, setLoginModal] = useState(
+    !(localStorage.getItem("logstat") === "true")
+  );
   const showLoginModal = () => {
     setLoginModal(true);
     setInterestsModal(false);
@@ -48,8 +51,14 @@ function App() {
         <Route
           exact
           path="/profile"
-          element={<Profile interestModalTrigger={showInterestsModal} passwordModalTrigger={showPasswordUpdateModal}/>}
+          element={
+            <Profile
+              interestModalTrigger={showInterestsModal}
+              passwordModalTrigger={showPasswordUpdateModal}
+            />
+          }
         />
+        <Route exact path="/" element={<Home showLoginModal={showLoginModal}/>} />
       </Routes>
       <Modal show={LoginModal} close_modal={closeModal}>
         <Login SignupModalTrigger={showSignupModal} close_modal={closeModal} />

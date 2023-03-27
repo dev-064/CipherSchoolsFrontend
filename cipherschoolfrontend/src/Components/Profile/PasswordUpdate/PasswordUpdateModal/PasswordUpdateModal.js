@@ -10,11 +10,19 @@ const PasswordUpdateModalContent = () => {
   const handlePasswordUpdate = (props) => {
     if (New === Confirm) {
       axios
-        .put(`${process.env.REACT_APP_AUTH_API}/UpdatePassword`, {
-          email: localStorage.getItem("email"),
-          OldPassword: Current,
-          NewPassword: New,
-        })
+        .put(
+          `${process.env.REACT_APP_AUTH_API}/UpdatePassword`,
+          {
+            email: localStorage.getItem("email"),
+            OldPassword: Current,
+            NewPassword: New,
+          },
+          {
+            headers: {
+              "auth-token": localStorage.getItem("token"),
+            },
+          }
+        )
         .then(function (response) {
           console.log("response", response);
           props.close_modal();

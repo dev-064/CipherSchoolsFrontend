@@ -1,0 +1,10 @@
+#logout{
+    display: flex;
+    background-color: white;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px;
+}
+#logout i{
+    cursor: pointer;
+}

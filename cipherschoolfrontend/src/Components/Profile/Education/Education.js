@@ -3,17 +3,31 @@ import { useState } from "react";
 import "./Education.css";
 import axios from "axios";
 const Education = () => {
-  const [highestEducation, sethighestEducation] = useState("Graduation");
-  const [CurrentStatus, setCurrentStatus] = useState("College Student");
+  const [highestEducation, sethighestEducation] = useState(
+    JSON.parse(localStorage.getItem("user")).PersonalInformation
+      .HighestEducation
+  );
+  const [CurrentStatus, setCurrentStatus] = useState(
+    JSON.parse(localStorage.getItem("user")).PersonalInformation
+      .CurrentlyStudying
+  );
   const [EditState, setEditState] = useState(false);
   const [buttonState, setbuttonState] = useState("Edit");
   const changeEducationStatus = () => {
     axios
-      .put(`${process.env.REACT_APP_UserINFO_API}/PersonalInformation`, {
-        email: localStorage.getItem("email"),
-        HighestEducation: highestEducation,
-        CurrentlyStudying: CurrentStatus,
-      })
+      .put(
+        `${process.env.REACT_APP_UserINFO_API}/PersonalInformation`,
+        {
+          email: localStorage.getItem("email"),
+          HighestEducation: highestEducation,
+          CurrentlyStudying: CurrentStatus,
+        },
+        {
+          headers: {
+            "auth-token": localStorage.getItem("token"),
+          },
+        }
+      )
       .then(function (response) {})
       .catch(function (error) {
         console.log("error", error);

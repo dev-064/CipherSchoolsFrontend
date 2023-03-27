@@ -6,7 +6,7 @@ import { showToastMessage } from "../Toast/Toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 function Login(props) {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -25,10 +25,13 @@ function Login(props) {
           password: formik.values.password,
         })
         .then(function (response) {
-          localStorage.setItem("token", response.data.authtoken);
+          console.log("response", response);
+          localStorage.setItem("logstat", true);
+          localStorage.setItem("token", response.data.authToken);
           localStorage.setItem("email", response.data.user.email);
+          localStorage.setItem("user", JSON.stringify(response.data.user));
           showToastMessage(response.data.message, "positive");
-          navigate("/profile")
+          navigate("/profile");
           props.close_modal();
         })
         .catch(function (error) {

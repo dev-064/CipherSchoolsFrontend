@@ -9,6 +9,11 @@ const InterestsModalContent = (props) => {
       .put(`${process.env.REACT_APP_UserINFO_API}/Interests`, {
         email: localStorage.getItem("email"),
         Interests: InterestArray,
+      },
+      {
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
       })
       .then(function (response) {
         console.log("response", response);

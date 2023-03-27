@@ -3,25 +3,45 @@ import { useState } from "react";
 import "./Links.css";
 import axios from "axios";
 const Links = () => {
-  const [facebook, setfacebook] = useState("facebook");
-  const [Instagram, setInstagram] = useState("Instagram");
-  const [Linkedin, setLinkedin] = useState("Linkedin");
-  const [Twitter, setTwitter] = useState("Twitter");
-  const [Github, setGithub] = useState("Github");
-  const [Website, setWebsite] = useState("Website");
+  const [facebook, setfacebook] = useState(
+    JSON.parse(localStorage.getItem("user")).SocialMediaLinks.facebook
+  );
+  const [Instagram, setInstagram] = useState(
+    JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Instagram
+  );
+  const [Linkedin, setLinkedin] = useState(
+    JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Linkedin
+  );
+  const [Twitter, setTwitter] = useState(
+    JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Twitter
+  );
+  const [Github, setGithub] = useState(
+    JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Github
+  );
+  const [Website, setWebsite] = useState(
+    JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Website
+  );
   const [EditState, setEditState] = useState(false);
   const [buttonState, setbuttonState] = useState("Edit");
   const handleSubmitLink = () => {
     axios
-      .put(`${process.env.REACT_APP_UserINFO_API}/SocialMedialinks`, {
-        email: localStorage.getItem("email"),
-        facebook: facebook,
-        Instagram: Instagram,
-        Linkedin: Linkedin,
-        Github: Github,
-        Twitter: Twitter,
-        Website: Website,
-      })
+      .put(
+        `${process.env.REACT_APP_UserINFO_API}/SocialMedialinks`,
+        {
+          email: localStorage.getItem("email"),
+          facebook: facebook,
+          Instagram: Instagram,
+          Linkedin: Linkedin,
+          Github: Github,
+          Twitter: Twitter,
+          Website: Website,
+        },
+        {
+          headers: {
+            "auth-token": localStorage.getItem("token"),
+          },
+        }
+      )
       .then(function (response) {
         console.log("response", response);
       })

@@ -29,7 +29,10 @@ function Signup(props) {
           phone: formik.values.phone,
         })
         .then(function (response) {
-          localStorage.setItem("token", response.data.authtoken);
+          localStorage.setItem("logstat", true);
+          localStorage.setItem("token", response.data.authToken);
+          localStorage.setItem("email", response.data.user.email);
+          localStorage.setItem("user", JSON.stringify(response.data.user));
           props.close_modal();
           navigate("/profile");
           showToastMessage("User is Successfully Registered", "positive");
