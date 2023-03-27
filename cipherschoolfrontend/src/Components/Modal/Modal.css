@@ -6,7 +6,6 @@
     justify-content: center;
     align-items: center;
     z-index: 1000000;
-    gap: 0.25em;
     flex-direction: column;
     flex: 1;
     inset: 0;
@@ -15,12 +14,12 @@
 }
 .modal-content {
     height: fit-content;
-    width: 30vw;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     z-index: 1000001;
     background-color: rgb(255, 255, 255);
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     border-radius: 10px;
     border: 1px solid black;
 }
@@ -45,12 +44,10 @@
 
 .modal-external-content {
     padding: 2em;
-    padding-top: 0.5em;
     display: flex;
     justify-content: center;
     flex-direction: column;
     color: white;
-    align-items: center;
     text-align: center;
 
 }

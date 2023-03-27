@@ -1,0 +1,33 @@
+#InterestModal{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    gap: 10px;
+}
+.Interests{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.tags{
+    width: 170px;
+    background-color: #f2f5fa;
+    border: none;
+    color: #565b5d;
+    padding: 10px 20px;
+    text-align: left;
+    font-weight:600;
+    border-radius: 10px;
+}
+.InterstsModalButton button{
+    width: 100px;
+    margin: 20px;
+    padding: 7px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: orange;
+    color: white;
+    border: none;
+}

@@ -28,4 +28,5 @@
 .AboutContainer p{
     width: 95%;
     padding: 0em 2em;
+    border: none;
 }
