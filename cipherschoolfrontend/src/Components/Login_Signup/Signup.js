@@ -3,7 +3,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./Login_Signup.css";
 import axios from "axios";
+import { showToastMessage } from "../Toast/Toast";
+import { useNavigate } from "react-router-dom";
 function Signup(props) {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -19,11 +22,18 @@ function Signup(props) {
     }),
     onSubmit: (values) => {
       axios
-        .post("", {
+        .post(`${process.env.REACT_APP_AUTH_API}/signup`, {
           email: formik.values.email,
           password: formik.values.password,
+          name: formik.values.name,
+          phone: formik.values.phone,
         })
-        .then(function (response) {})
+        .then(function (response) {
+          localStorage.setItem("token", response.data.authtoken);
+          props.close_modal();
+          navigate("/profile");
+          showToastMessage("User is Successfully Registered", "positive");
+        })
         .catch(function (error) {
           console.log(error);
         });
@@ -102,7 +112,15 @@ function Signup(props) {
           </button>
         </form>
         <p>
-          Already Have an account ? <p>Login</p>
+          Already Have an account ?{" "}
+          <p
+            onClick={() => {
+              props.LoginModalTrigger();
+            }}
+            style={{ cursor: "pointer", color: "blue" }}
+          >
+            Login
+          </p>
         </p>
       </div>
     </>
