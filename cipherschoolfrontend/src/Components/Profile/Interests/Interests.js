@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Interests.css";
 const Interests = (props) => {
+  const [InterestArray, setInterestArray] = useState(
+    JSON.parse(localStorage.getItem("user")).interests
+  );
   return (
     <div id="Interests">
       <div className="header">
@@ -13,9 +16,11 @@ const Interests = (props) => {
           Edit
         </button>
       </div>
-      {/* <div className="InterestsContainer">
-
-      </div> */}
+      <div className="InterestsContainer">
+        {InterestArray.map((element) => {
+          return <div className="Interststags">{element}</div>;
+        })}
+      </div>
     </div>
   );
 };

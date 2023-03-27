@@ -5,22 +5,39 @@ import axios from "axios";
 import { showToastMessage } from "../../Toast/Toast";
 const Links = () => {
   const [facebook, setfacebook] = useState(
-    JSON.parse(localStorage.getItem("user")).SocialMediaLinks.facebook
+    JSON.parse(localStorage.getItem("user")).SocialMediaLinks !== undefined
+      ? JSON.parse(localStorage.getItem("user")).SocialMediaLinks.facebook
+      : "Facebook Link"
   );
   const [Instagram, setInstagram] = useState(
-    JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Instagram
+    (JSON.parse(localStorage.getItem("user")).SocialMediaLinks !==
+      undefined)
+      ? JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Instagram
+      : "Instagram Link"
   );
   const [Linkedin, setLinkedin] = useState(
-    JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Linkedin
+    (JSON.parse(localStorage.getItem("user")).SocialMediaLinks !==
+      undefined)
+      ? JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Linkedin
+      : "Linkedin Link"
   );
   const [Twitter, setTwitter] = useState(
-    JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Twitter
+    (JSON.parse(localStorage.getItem("user")).SocialMediaLinks !==
+      undefined)
+      ? JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Twitter
+      : "Twitter Link"
   );
   const [Github, setGithub] = useState(
-    JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Github
+    (JSON.parse(localStorage.getItem("user")).SocialMediaLinks !==
+      undefined)
+      ? JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Github
+      : "Github Link"
   );
   const [Website, setWebsite] = useState(
-    JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Website
+    (JSON.parse(localStorage.getItem("user")).SocialMediaLinks !==
+      undefined)
+      ? JSON.parse(localStorage.getItem("user")).SocialMediaLinks.Website
+      : "Website Link"
   );
   const [EditState, setEditState] = useState(false);
   const [buttonState, setbuttonState] = useState("Edit");
@@ -45,7 +62,7 @@ const Links = () => {
       )
       .then(function (response) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
-        showToastMessage("Links is Successfully Saved", "positive")
+        showToastMessage("Links is Successfully Saved", "positive");
       })
       .catch(function (error) {
         if (error.response.status === 400) {

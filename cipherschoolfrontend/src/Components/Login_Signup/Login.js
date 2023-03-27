@@ -83,7 +83,7 @@ function Login(props) {
           ) : null}
 
           <br />
-          <button className="sgnbutton" type="submit">
+          <button className="sgnbutton" type="submit" style={{ cursor: "pointer"}}>
             Sign In
           </button>
         </form>

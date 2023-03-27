@@ -1,27 +1,38 @@
-#Interests{
+#Interests {
     margin: 2em;
 }
 
-#Interests .header{
+#Interests .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-#Interests .header button{
+
+#Interests .header button {
     margin-right: 20px;
-    padding: 7px 30px ;
+    padding: 7px 30px;
     cursor: pointer;
     border-radius: 5px;
     background-color: orange;
     color: white;
     border: none;
 }
-.InterestsContainer{
-    border: 1px solid rgba(0, 0, 0, 0.587);
+
+.InterestsContainer {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    flex-direction: column;
     margin: 10px;
     border-radius: 10px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.Interststags {
+    padding: 7px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgba(255, 166, 0, 0.815);
+    color: black;
+    border: none;
 }

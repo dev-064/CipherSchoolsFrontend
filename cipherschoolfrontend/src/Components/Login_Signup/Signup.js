@@ -113,7 +113,7 @@ function Signup(props) {
             <p>{formik.errors.password}</p>
           ) : null}
           <br />
-          <button className="sgnbutton" type="submit">
+          <button className="sgnbutton" type="submit" style={{ cursor: "pointer"}}>
             Sign Up
           </button>
         </form>

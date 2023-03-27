@@ -18,8 +18,9 @@ const InterestsModalContent = (props) => {
       })
       .then(function (response) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
-        showToastMessage("Interests are Successfully Added", "positive")
+        showToastMessage("Interests are Successfully Added", "positive");
         props.close_modal();
+        location.reload()
       })
       .catch(function (error) {
         if (error.response.status === 400) {
@@ -45,12 +46,12 @@ const InterestsModalContent = (props) => {
           <div
             className="tags"
             onClick={() => {
-              const index = InterestArray.indexOf("abc");
+              const index = InterestArray.indexOf("App Development");
               if (index === -1) {
                 document.getElementsByClassName(
                   "tags"
                 )[0].style.backgroundColor = "orange";
-                addElement("abc");
+                addElement("App Development");
               } else {
                 document.getElementsByClassName(
                   "tags"
@@ -59,17 +60,17 @@ const InterestsModalContent = (props) => {
               }
             }}
           >
-            abc
+            App Development
           </div>
           <div
             className="tags"
             onClick={() => {
-              const index = InterestArray.indexOf("bcd");
+              const index = InterestArray.indexOf("Web Development");
               if (index === -1) {
                 document.getElementsByClassName(
                   "tags"
                 )[1].style.backgroundColor = "orange";
-                addElement("bcd");
+                addElement("Web Development");
               } else {
                 document.getElementsByClassName(
                   "tags"
@@ -78,17 +79,17 @@ const InterestsModalContent = (props) => {
               }
             }}
           >
-            abc
+            Web Development
           </div>
           <div
             className="tags"
             onClick={() => {
-              const index = InterestArray.indexOf("def");
+              const index = InterestArray.indexOf("Game Development");
               if (index === -1) {
                 document.getElementsByClassName(
                   "tags"
                 )[2].style.backgroundColor = "orange";
-                addElement("def");
+                addElement("Game Development");
               } else {
                 document.getElementsByClassName(
                   "tags"
@@ -97,17 +98,17 @@ const InterestsModalContent = (props) => {
               }
             }}
           >
-            abc
+            Game Development
           </div>
           <div
             className="tags"
             onClick={() => {
-              const index = InterestArray.indexOf("ldjk");
+              const index = InterestArray.indexOf("Data Structures");
               if (index === -1) {
                 document.getElementsByClassName(
                   "tags"
                 )[3].style.backgroundColor = "orange";
-                addElement("ldjk");
+                addElement("Data Structures");
               } else {
                 document.getElementsByClassName(
                   "tags"
@@ -116,19 +117,19 @@ const InterestsModalContent = (props) => {
               }
             }}
           >
-            abc
+            Data Structures
           </div>
         </div>
         <div className="Interests">
           <div
             className="tags"
             onClick={() => {
-              const index = InterestArray.indexOf("lfjdf");
+              const index = InterestArray.indexOf("Programming");
               if (index === -1) {
                 document.getElementsByClassName(
                   "tags"
                 )[4].style.backgroundColor = "orange";
-                addElement("lfjdf");
+                addElement("Programming");
               } else {
                 document.getElementsByClassName(
                   "tags"
@@ -137,17 +138,17 @@ const InterestsModalContent = (props) => {
               }
             }}
           >
-            abc
+            Programming
           </div>
           <div
             className="tags"
             onClick={() => {
-              const index = InterestArray.indexOf("rty");
+              const index = InterestArray.indexOf("Machine Learning");
               if (index === -1) {
                 document.getElementsByClassName(
                   "tags"
                 )[5].style.backgroundColor = "orange";
-                addElement("rty");
+                addElement("Machine Learning");
               } else {
                 document.getElementsByClassName(
                   "tags"
@@ -156,17 +157,17 @@ const InterestsModalContent = (props) => {
               }
             }}
           >
-            abc
+            Machine Learning
           </div>
           <div
             className="tags"
             onClick={() => {
-              const index = InterestArray.indexOf("lajfeo");
+              const index = InterestArray.indexOf("Data Science");
               if (index === -1) {
                 document.getElementsByClassName(
                   "tags"
                 )[6].style.backgroundColor = "orange";
-                addElement("lajfeo");
+                addElement("Data Science");
               } else {
                 document.getElementsByClassName(
                   "tags"
@@ -175,17 +176,17 @@ const InterestsModalContent = (props) => {
               }
             }}
           >
-            abc
+            Data Science
           </div>
           <div
             className="tags"
             onClick={() => {
-              const index = InterestArray.indexOf("aeffe");
+              const index = InterestArray.indexOf("Others");
               if (index === -1) {
                 document.getElementsByClassName(
                   "tags"
                 )[7].style.backgroundColor = "orange";
-                addElement("aeffe");
+                addElement("Others");
               } else {
                 document.getElementsByClassName(
                   "tags"
@@ -194,7 +195,7 @@ const InterestsModalContent = (props) => {
               }
             }}
           >
-            abc
+            Others
           </div>
         </div>
       </div>

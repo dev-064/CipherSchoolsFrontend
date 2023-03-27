@@ -5,12 +5,14 @@ import axios from "axios";
 import { showToastMessage } from "../../Toast/Toast";
 const Education = () => {
   const [highestEducation, sethighestEducation] = useState(
-    JSON.parse(localStorage.getItem("user")).PersonalInformation
-      .HighestEducation
+    (JSON.parse(localStorage.getItem("user")).PersonalInformation
+    .HighestEducation!==undefined) ? JSON.parse(localStorage.getItem("user")).PersonalInformation
+    .HighestEducation : "Graduation"
   );
   const [CurrentStatus, setCurrentStatus] = useState(
-    JSON.parse(localStorage.getItem("user")).PersonalInformation
-      .CurrentlyStudying
+    JSON.parse(JSON.parse(localStorage.getItem("user")).PersonalInformation
+    .CurrentlyStudying!==undefined) ? JSON.parse(localStorage.getItem("user")).PersonalInformation
+    .CurrentlyStudying : "Job"
   );
   const [EditState, setEditState] = useState(false);
   const [buttonState, setbuttonState] = useState("Edit");

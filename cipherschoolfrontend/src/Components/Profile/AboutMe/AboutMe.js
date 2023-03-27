@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import {showToastMessage} from "../../Toast/Toast"
+import { showToastMessage } from "../../Toast/Toast";
 import "./AboutMe.css";
 const AboutMe = () => {
   const [Desc, setDesc] = useState(
-    JSON.parse(localStorage.getItem("user")).Description
+    JSON.parse(localStorage.getItem("user")).Description !== undefined
+      ? JSON.parse(localStorage.getItem("user")).Description
+      : "Add Something About You!"
   );
   const [EditState, setEditState] = useState(false);
   const [buttonState, setbuttonState] = useState("Edit");
@@ -25,7 +27,7 @@ const AboutMe = () => {
       )
       .then(function (response) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
-        showToastMessage("Description is Successfully Saved", "positive")
+        showToastMessage("Description is Successfully Saved", "positive");
       })
       .catch(function (error) {
         if (error.response.status === 400) {

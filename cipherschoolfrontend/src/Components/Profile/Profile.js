@@ -7,6 +7,7 @@ import PasswordUpdate from "./PasswordUpdate/PasswordUpdate";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logout from "../Logout/Logout";
+import PersonalInformation from "./PersonalInformation/PersonalInformation";
 const Profile = (props) => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -16,14 +17,19 @@ const Profile = (props) => {
   }, []);
 
   return (
-    <div>
-      <Logout/>
-      <AboutMe />
-      <Links />
-      <Education />
-      <PasswordUpdate showModal={props.passwordModalTrigger} />
-      <Interests showModal={props.interestModalTrigger} />
-    </div>
+    <>
+      <Logout />
+      <div>
+        <PersonalInformation showModal={props.PersonalInformationModalTrigger}/>
+      </div>
+      <div>
+        <AboutMe />
+        <Links />
+        <Education />
+        <PasswordUpdate showModal={props.passwordModalTrigger} />
+        <Interests showModal={props.interestModalTrigger} />
+      </div>
+    </>
   );
 };
 

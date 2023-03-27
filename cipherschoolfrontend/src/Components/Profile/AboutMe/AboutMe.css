@@ -1,7 +1,6 @@
 #About{
     margin: 2em;
 }
-
 #About .header{
     display: flex;
     justify-content: space-between;
@@ -28,4 +27,6 @@
     width: 95%;
     padding: 1em 2em;
     border: none;
+    border-radius: 10px;
+    background-color: white;
 }
