@@ -17,7 +17,6 @@
     border: none;
 }
 .AboutContainer{
-    border: 1px solid rgba(0, 0, 0, 0.587);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,8 +24,8 @@
     margin: 10px;
     border-radius: 10px;
 }
-.AboutContainer p{
+.AboutContainer input{
     width: 95%;
-    padding: 0em 2em;
+    padding: 1em 2em;
     border: none;
 }

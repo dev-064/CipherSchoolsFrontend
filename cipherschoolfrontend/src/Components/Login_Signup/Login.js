@@ -26,6 +26,7 @@ function Login(props) {
         })
         .then(function (response) {
           localStorage.setItem("token", response.data.authtoken);
+          localStorage.setItem("email", response.data.user.email);
           showToastMessage(response.data.message, "positive");
           navigate("/profile")
           props.close_modal();
