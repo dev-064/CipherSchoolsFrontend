@@ -3,7 +3,9 @@ import "./PersonalInformationModalContent.css";
 import { useState } from "react";
 import axios from "axios";
 import { showToastMessage } from "../../../Toast/Toast";
+import { useLocation } from "react-router-dom";
 const PersonalInformationModalContent = () => {
+  const location=useLocation();
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState(
     JSON.parse(localStorage.getItem("user")).email
@@ -12,15 +14,24 @@ const PersonalInformationModalContent = () => {
   const handlePersonalInfoUpdate = (props) => {
     axios
       .put(
-        `${process.env.REACT_APP_AUTH_API}/UpdatePassword`,
-        {},
+        `${process.env.REACT_APP_UserINFO_API}/Information`,
+        {
+          email:Email,
+          name:Name,
+          Phone:Phone
+        },
         {
           headers: {
             "auth-token": localStorage.getItem("token"),
           },
         }
       )
-      .then(function (response) {})
+      .then(function (response) {
+        props.close_modal();
+        showToastMessage("Information is Successfully Updated","positive");
+        localStorage.setItem("user",response.data.user);
+        location.reload()
+      })
       .catch(function (error) {
         if (error.response.status === 400) {
           showToastMessage(error.response.data.error, "negative");
